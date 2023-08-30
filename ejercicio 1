@@ -3,7 +3,7 @@
 tiempo a su residencia si se desplaza a x metros por minuto. 
 
 El valor de debe ser ingresado al momento de ejecutar su código. 
-(Nota: Asuma que su residencia está en línea recta)*/
+(Nota: Asuma que su residencia está en línea recta)
 
 Ejemplo: 
 
@@ -11,28 +11,39 @@ Con x=300 el permiso vencerá
 Con x=500 se logra llegar a tiempo*/
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdbool.h>
+#include <ctype.h>
 
 int main() {
     int speed;
     int llega; 
+    char input[50];
 
-    printf("Ingrese su velocidad (metros/minuto):\n");
-    int result = scanf("%d", &speed);
+    bool inputIsValid = false; // Inicialmente, la entrada no es válida
 
-    while (result != 1 || speed < 0) { // las barras "||" es un "o", para combinar condiciones
-        printf("Entrada invalida. Debe ingresar una velocidad numerica positiva:\n");
+    while (!inputIsValid) {
+        printf("Ingrese su velocidad (metros/minuto):\n");
+        scanf("%s", input);
 
-        int c;  // Limpiar el búfer de entrada para evitar problemas
-        while ((c = getchar()) != '\n' && c != EOF);
+        inputIsValid = true; // Suponemos que la entrada es válida hasta que se demuestre lo contrario
 
-        result = scanf("%d", &speed);
+        // Verificar si la entrada consiste en números
+        for (int i = 0; input[i] != '\0'; i++) {
+            if (!isdigit(input[i])) {
+                inputIsValid = false;
+                printf("Entrada no válida. Ingrese solo números.\n");
+                break;
+            }
+        }
     }
+
+    // Convertir la entrada en un número entero
+    sscanf(input, "%d", &speed);
 
     llega = 3700 - 9 * speed;
 
     if (llega <= 0) {
-        printf("Llegara a tiempo a su residencia.\n");
+        printf("Llegará a tiempo a su residencia.\n");
     } else {
         printf("No llegará a tiempo a su residencia.\n");
     }
