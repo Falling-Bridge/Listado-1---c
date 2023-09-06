@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    int tamaño; printf("Ingrese las dimensiones:\n"); scanf("%d", &tamaño);
+    for (int i = 0; i < tamaño; i++) {
+        char caracter;
+        if (i % 2 == 0) {
+            caracter = '+';
+        } else {
+            caracter = '#';
+        }
+        for (int j = 0; j < tamaño; j++) {
+            if (j >= i) {
+                printf("%c", caracter);
+            } else {
+                printf(" ");
+            }
+        }
+        printf("\n");
+    }
+    return 0;
+}
