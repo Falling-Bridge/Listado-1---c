@@ -1,53 +1,13 @@
-/*Son las 18:25 y sólo le quedan 9 minutos a su permiso sanitario para regresar a su residencia, la cual está a 
-3.7 km de distancia desde su posición actual. Escriba un programa en C que decida si logrará llegar a 
-tiempo a su residencia si se desplaza a x metros por minuto. 
-
-El valor de debe ser ingresado al momento de ejecutar su código. 
-(Nota: Asuma que su residencia está en línea recta)
-
-Ejemplo: 
-
-Con x=300 el permiso vencerá
-Con x=500 se logra llegar a tiempo*/
-
 #include <stdio.h>
-#include <stdbool.h>
-#include <ctype.h>
-
 int main() {
-    int speed;
-    int llega; 
-    char input[50];
-
-    bool inputIsValid = false; // Inicialmente, la entrada no es válida
-
-    while (!inputIsValid) {
-        printf("Ingrese su velocidad (metros/minuto):\n");
-        scanf("%s", input);
-
-        inputIsValid = true; // Suponemos que la entrada es válida hasta que se demuestre lo contrario
-
-        // Verificar si la entrada consiste en números
-        for (int i = 0; input[i] != '\0'; i++) {
-            if (!isdigit(input[i])) {
-                inputIsValid = false;
-                printf("Entrada no válida. Ingrese solo números.\n");
-                break;
-            }
-        }
-    }
-
-    // Convertir la entrada en un número entero
-    sscanf(input, "%d", &speed);
-
+    int speed, llega;
+    scanf("%d", &speed);
     llega = 3700 - 9 * speed;
-
     if (llega <= 0) {
-        printf("Llegará a tiempo a su residencia.\n");
+        printf("Llegara a tiempo a su residencia.\n");
     } else {
-        printf("No llegará a tiempo a su residencia.\n");
+        printf("No llegara a tiempo a su residencia.\n");
     }
-
     return 0;
 }
 
