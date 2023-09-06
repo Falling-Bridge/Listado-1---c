@@ -1,1 +1,36 @@
+#include <stdio.h>
 
+int main(){
+    int numero, numero2, conversor; printf("Ingrese un numero:\n"); scanf("%d", &numero); int matriz[8] = {0};
+    if(numero >= 0){
+        for(int i = 0; i < numero; i++){
+            conversor = numero%2;
+            matriz[i] = conversor;
+            numero /= 2;
+        }
+    }else{
+        numero2 = -numero;
+        for(int i = 0; i < numero; i++){
+            conversor = numero%2;
+            matriz[i] = conversor;
+            numero /= 2;
+        }for(int i = 0; i < numero; i++){
+            if(matriz[i] == 0){
+                matriz[i] = 1;
+            }else{
+                matriz[i] = 0;
+
+            }
+        }for(int i = 7; i > 0; i--){
+            if(matriz[i] == 1){
+                matriz[i] = 0;
+            }else{
+                matriz[i] = 1;
+                break;
+            }
+        }
+    }for(int k = 7; k >=0; k--){
+        printf("%d", &matriz[k]);
+    }
+    return 0;
+}
