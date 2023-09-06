@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main() {
+    int numero, contador;
+    float suma = 0.0;
+    printf("Ingrese un numero mayor a uno: ");
+    scanf("%d", &numero);
+    for (contador = 1; contador <= numero; contador++) {
+        suma += 1.0 / contador;
+    }
+    printf("%.10f", suma);
+    return 0;
+}
