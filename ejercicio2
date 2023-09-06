@@ -1,36 +1,41 @@
 #include <stdio.h>
 
-int main(){
-    int numero, numero2, conversor; printf("Ingrese un numero:\n"); scanf("%d", &numero); int matriz[8] = {0};
-    if(numero >= 0){
-        for(int i = 0; i < numero; i++){
-            conversor = numero%2;
-            matriz[i] = conversor;
-            numero /= 2;
-        }
-    }else{
-        numero2 = -numero;
-        for(int i = 0; i < numero; i++){
-            conversor = numero%2;
-            matriz[i] = conversor;
-            numero /= 2;
-        }for(int i = 0; i < numero; i++){
-            if(matriz[i] == 0){
-                matriz[i] = 1;
-            }else{
-                matriz[i] = 0;
-
-            }
-        }for(int i = 7; i > 0; i--){
-            if(matriz[i] == 1){
-                matriz[i] = 0;
-            }else{
-                matriz[i] = 1;
-                break;
-            }
-        }
-    }for(int k = 7; k >=0; k--){
-        printf("%d", &matriz[k]);
+int main() {
+    int numero, conversor; printf("Ingrese un numero entre -127 y 128:\n"); scanf("%d", &numero); int matriz[8] = {0};
+    if (numero < -127 || numero > 128) {
+        printf("Numero fuera de rango\n");
+        return 1;
     }
+    if (numero >= 0) {
+        for (int i = 7; i >= 0; i--) {
+            conversor = numero % 2;
+            matriz[i] = conversor;
+            numero /= 2;
+        }
+    } else {
+        numero = -numero;
+        for (int i = 7; i >= 0; i--) {
+            conversor = numero % 2;
+            matriz[i] = conversor;
+            numero /= 2;
+        }
+        for (int i = 0; i < 8; i++) {
+            if (matriz[i] == 0) {
+                matriz[i] = 1;
+            } else {
+                matriz[i] = 0;
+            }
+        }
+        int carry = 1;
+        for (int i = 7; i >= 0; i--) {
+            int sum = matriz[i] + carry;
+            matriz[i] = sum % 2;
+            carry = sum / 2;
+        }
+    }
+    for (int k = 0; k < 8; k++) {
+        printf("%d", matriz[k]);
+    }
+    printf("\n");
     return 0;
 }
