@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main() {
+    int exams, contador, marks = 0, average; scanf("%d", &exams);
+    while (exams < 1 || exams > 10) {
+        scanf("%d", &exams);
+    }
+    int arreglo[exams];
+    for (contador = 0; contador < exams; contador++) {
+        do {
+            scanf("%d", &arreglo[contador]);
+        } while (arreglo[contador] < 3 || arreglo[contador] > 5);
+        marks += arreglo[contador];
+    }
+    average = (float)marks / exams;
+    if (average > 3 && average < 4) {
+        printf("NONE");
+    } else if (average == 5) {
+        printf("NAMED");
+    } else if (average >= 4.5 && average < 5) {
+        printf("HIGH");
+    } else {
+        printf("COMMON");
+    }
+    return 0;
+}
