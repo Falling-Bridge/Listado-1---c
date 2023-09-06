@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(){
+    int a, b, c, n, resultado;
+    printf("ingrese el valor a de la formula: a^n + b^n = c^n:\n"); scanf("%d", &a);
+    printf("ingrese el valor b de la formula: a^n + b^n = c^n:\n"); scanf("%d", &b);
+    printf("ingrese el valor c de la formula: a^n + b^n = c^n:\n"); scanf("%d", &c);
+    printf("ingrese el valor n de la formula: a^n + b^n = c^n, debe ser mayor a 2:\n"); scanf("%d", &n);
+    if (n <= 2 || a <= 0 || b <= 0 || c <= 0) {
+        printf("No se puede calcular\n");
+    } else {
+        if (pow(a, n) + pow(b, n) == pow(c, n)) {
+        printf("Eureka!");
+         }else{
+        printf("Oh no! Fermat se equivoco");
+        }
+    }
+    return 0;
+}
